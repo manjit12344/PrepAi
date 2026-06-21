@@ -62,7 +62,7 @@ export default function LandingPage() {
     if(know?.user){
       navigate("/features")
     }
-  })
+  },[])
   const role = useTypewriter(ROLES);
   const canvasRef = useRef(null);
 
