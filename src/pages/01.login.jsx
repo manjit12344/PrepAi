@@ -58,7 +58,9 @@ export default function LandingPage() {
   const navigate = useNavigate();
   const {know,knowMe} = userAuth();
   useEffect(()=>{
-    knowMe();
+    async function all(){
+      await knowMe()
+    }
     if(know?.user){
       navigate("/features")
     }
