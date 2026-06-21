@@ -1,5 +1,4 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import AuthCallback from "./pages/AuthCallback";
 
 import Login from "./pages/01.login";
 import Features from "./pages/02.features";
@@ -22,7 +21,6 @@ function App() {
 
       <Routes>
         <Route path="" element={<Features />}/>
-        <Route path="/auth/callback" element={<AuthCallback />} />
         <Route path="/login-signup" element={<Login />} />
         <Route path="/features" element={<Features />} />
         <Route path="/createNew" element={<CreateNew />} />
