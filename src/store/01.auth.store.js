@@ -20,7 +20,7 @@ export const userAuth = create((set, get) => ({
          set({know:response.data,error:null,loading:false});
 
         }catch(error){
-            set({ know:{},error: error.message, loading: false });
+            set({ error: error.message, loading: false });
         }
     },
     logOut: async()=>{

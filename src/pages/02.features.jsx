@@ -7,24 +7,28 @@ const Features = () => {
   const { know, knowMe } = userAuth();
   const navigate = useNavigate();
 
+useEffect(() => {
+  const checkAuth = async () => {
+    await knowMe();
+  };
 
-  useEffect(() => {
-    knowMe();
-  }, []);
+  checkAuth();
+}, []);
 
-  useEffect(() => {
-    // Wait for knowMe to finish, THEN redirect if not logged in
-    if (!loading && know !== undefined) {
-      if (!know?.user) {
-        navigate("/login-signup");
-      }
-    }
-  }, [know, loading]);
+useEffect(() => {
+  console.log("know:", know);
 
-  const userName = know?.user?.name || know?.user?.email?.split('@')[0] || "Guest";
+  if (know?.user) {
+    navigate("/features");
+  }
+}, [know]);
 
-  // Show nothing while loading (prevents flash redirect)
-  if (loading || !know?.user) return null;
+  // Get user name or use "Guest" as a fallback
+  const userName = know?.user?.displayName || know?.user?.email?.split('@')[0] || "Guest";
+
+  if (!know?.user) {
+    navigate("/login-signup")
+  }
 
   return (
     <div className="min-h-screen bg-canvas text-main font-sans antialiased border-t border-line flex flex-col justify-between transition-colors duration-150">
