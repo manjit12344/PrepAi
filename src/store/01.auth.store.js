@@ -31,7 +31,7 @@ export const userAuth = create((set, get) => ({
 
         }
         catch(error){
-            set({ error: error.message, loading: false });
+            set({know:{}, error: error.message, loading: false });
         }
     }
 
